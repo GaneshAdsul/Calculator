@@ -14,13 +14,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     var isNewNumber = false
-    var number1 = ""
-    var op =""
-    var isdot = false
-    var operations:String = ""
+    var number1 = ""        //value of number 1 is stored
+    var op =""              //which operation is to be performed is
+    var isdot = false       //to check if current number have dot
+    var operations:String = ""      //to display the whole operation
 
     fun buNumberEvent(view: View) {
-
         if (isNewNumber)
             etNumber.setText("")
         isNewNumber = false
@@ -47,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         etNumber.setText(buClickValue)
 
     }
-
 
     fun buOperationEvent(view: View) {
 
@@ -93,7 +91,6 @@ class MainActivity : AppCompatActivity() {
         operations = ""
         etOperation.setText("")
     }
-
     fun buBackSpace(view: View) {
         var num:String = etNumber.text.toString()
         num = removeLastChar(num)

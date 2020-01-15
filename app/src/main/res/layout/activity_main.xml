@@ -16,7 +16,8 @@
         android:background="@color/grey"
         android:gravity="bottom|right"
         android:onClick="buOperationEvent"
-        android:textSize="30sp" />
+        android:textColor="@color/white"
+        android:textSize="50sp" />
 
     <EditText
         android:id="@+id/etNumber"
@@ -28,7 +29,8 @@
         android:gravity="bottom|right"
         android:inputType="textPersonName"
         android:paddingTop="30pt"
-        android:textSize="36sp" />
+        android:textColor="@color/white"
+        android:textSize="65sp" />
 
     <TableLayout
         android:layout_width="match_parent"
