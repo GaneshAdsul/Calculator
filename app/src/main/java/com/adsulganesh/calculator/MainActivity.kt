@@ -1,16 +1,43 @@
 package com.adsulganesh.calculator
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import java.text.DecimalFormat
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val et:EditText = findViewById(R.id.etNumber)
+        val et1:TextView= findViewById(R.id.etOperation)
+
+        //
+        if (Build.VERSION.SDK_INT >= 21) {
+            et!!.showSoftInputOnFocus = false
+            et1!!.showSoftInputOnFocus = false
+        } else if (Build.VERSION.SDK_INT >= 11) {
+            et!!.setRawInputType(InputType.TYPE_CLASS_TEXT)
+            et!!.setTextIsSelectable(true)
+            et1!!.setRawInputType(InputType.TYPE_CLASS_TEXT)
+            et1!!.setTextIsSelectable(true)
+
+        } else {
+            et!!.setRawInputType(InputType.TYPE_NULL)
+            et!!.isFocusable = true
+            et1!!.setRawInputType(InputType.TYPE_NULL)
+            et1!!.isFocusable = true
+
+        }
+
     }
 
     var isNewNumber = false
@@ -58,6 +85,7 @@ class MainActivity : AppCompatActivity() {
             buDiv.id -> op = "/"
             buMod.id -> op = "%"
         }
+        isdot = false
         number1 = etNumber.text.toString()
         isNewNumber = true
         operations += op
@@ -77,7 +105,7 @@ class MainActivity : AppCompatActivity() {
             "/" -> result = number1.toDouble() / number2.toDouble()
             "%" -> result = (number1.toDouble() * number2.toDouble()) / 100
         }
-        etNumber.setText(result.toString())
+        etNumber.setText(removeDot(result.toString()))
         op = ""
         isNewNumber = true
     }
@@ -90,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         etNumber.setText("")
         operations = ""
         etOperation.setText("")
+        isdot = false
     }
     fun buBackSpace(view: View) {
         var num:String = etNumber.text.toString()
@@ -106,4 +135,21 @@ class MainActivity : AppCompatActivity() {
         else
             return (s.substring(0, s.length - 1))
     }
+
+
+    fun removeDot(num:String):String {
+
+        var a=num.toDouble()
+        val df = DecimalFormat("#")
+
+        if (isWhole(a))
+            return df.format(a).toString()
+        else
+            return  a.toString()
+    }
+    fun isWhole(value: Double):Boolean {
+        return value - value.toInt() == 0.0
+    }
+
+    fun buNon(view: View) {}
 }

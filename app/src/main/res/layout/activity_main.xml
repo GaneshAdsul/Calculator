@@ -15,7 +15,7 @@
         android:layout_weight="1"
         android:background="@color/grey"
         android:gravity="bottom|right"
-        android:onClick="buOperationEvent"
+        android:onClick="buNon"
         android:textColor="@color/white"
         android:textSize="50sp" />
 
@@ -232,7 +232,7 @@
 
         <Button
             android:id="@+id/bu0"
-            android:layout_width="194dp"
+            android:layout_width="191dp"
             android:layout_height="40pt"
             android:layout_weight="1"
             android:background="@color/lightGrey"
@@ -242,7 +242,7 @@
 
         <Button
             android:id="@+id/buDot"
-            android:layout_width="wrap_content"
+            android:layout_width="102dp"
             android:layout_height="40pt"
             android:layout_weight="1"
             android:background="@color/lightGrey"
@@ -252,7 +252,7 @@
 
         <Button
             android:id="@+id/buEqual"
-            android:layout_width="wrap_content"
+            android:layout_width="102dp"
             android:layout_height="40pt"
             android:layout_weight="1"
             android:background="@color/yellow"
